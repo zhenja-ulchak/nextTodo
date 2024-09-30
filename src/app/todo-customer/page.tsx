@@ -1,3 +1,4 @@
+'use client';
 import React, { useState, useEffect, useRef } from 'react';
 
 import { CustomersTodoStatusTypeEnum, CustomerTodoType } from '../../types/ToDoCustomerType'
@@ -5,7 +6,7 @@ import {
   fetchTodos,
   createToDoList,
   updateToDoList
-} from '../../api/ToDoApiProvaider';
+} from '@/api';
 import {
   Grid,
   Button,
@@ -19,7 +20,7 @@ import {
 import EditIcon from '@mui/icons-material/Edit';
 // @ts-ignore
 import { useTable, usePagination, Column } from 'react-table';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { FaRegEye } from 'react-icons/fa';
 import { FaPlus } from 'react-icons/fa6';
 import { GiCheckMark } from 'react-icons/gi';
@@ -95,6 +96,8 @@ const TodoApp: React.FC = () => {
       const data = await fetchTodos();
       // @ts-ignore
       const tasks: Todo[] = data.data['customer_todo']; // Переконайтесь, що тут правильний тип
+      console.log(tasks);
+      
       setTodos(tasks);
     };
     loadTodos();

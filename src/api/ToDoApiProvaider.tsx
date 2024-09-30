@@ -18,6 +18,8 @@ export const fetchTodos = async (id?: number): Promise<CustomerTodoType | Custom
   try {
     const endpoint = id ? `/user/customer_todo/${id}` : `/user/customer_todo`;
     const response = await client.get(endpoint);
+    console.log(response);
+    
     return response.data;
   } catch (error) {
     console.error('Error fetching todo data:', error);

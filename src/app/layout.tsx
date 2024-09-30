@@ -1,7 +1,11 @@
+'use client';  
 import React from 'react';
 import { Footer } from '../components/footer'
 import SideBar from '../components/sidebar'
 import { NextIntlClientProvider  } from 'next-intl';
+import { useRouter } from 'next/navigation';
+import { isAuthenticated } from './utils/auth';
+
 
 // Завантаження повідомлень
 const messages = {
@@ -15,7 +19,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const locale = 'ua'; // Виберіть локаль
+  const router = useRouter();
 
+  // Якщо користувач не авторизований — редирект на логін
+  if (!isAuthenticated()) {
+    router.push('/login');  // Переадресовуємо на логін
+    return null; // Повертаємо порожній layout, поки редирект не завершиться
+  }
+  
   return (
     <NextIntlClientProvider locale={locale} messages={messages[locale]}>
       <html lang={locale}>
@@ -28,3 +39,4 @@ export default function RootLayout({
     </NextIntlClientProvider>
   );
 }
+
