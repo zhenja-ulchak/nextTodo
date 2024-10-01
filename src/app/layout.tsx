@@ -1,11 +1,11 @@
-'use client';  
-import React from 'react';
+'use client';
+import React, { useEffect } from 'react';
 import { Footer } from '../components/footer'
 import SideBar from '../components/sidebar'
-import { NextIntlClientProvider  } from 'next-intl';
+import { NextIntlClientProvider } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { isAuthenticated } from './utils/auth';
-
+import Login from './login/page'
 
 // Завантаження повідомлень
 const messages = {
@@ -22,18 +22,37 @@ export default function RootLayout({
   const router = useRouter();
 
   // Якщо користувач не авторизований — редирект на логін
-  if (!isAuthenticated()) {
-    router.push('/login');  // Переадресовуємо на логін
-    return null; // Повертаємо порожній layout, поки редирект не завершиться
-  }
-  
+
+  useEffect(() => {
+    if (!isAuthenticated()) {
+      // router.push('/login');  // Переадресовуємо на логін
+
+    }
+
+  }, [router]);
+
+
   return (
     <NextIntlClientProvider locale={locale} messages={messages[locale]}>
       <html lang={locale}>
         <body>
-          <SideBar />
-          {children}
-          <Footer />
+
+          {isAuthenticated() ?
+
+            <>
+              <SideBar />
+              {children}
+              <Footer />
+            </>
+            :
+            (
+            <>
+              <Login />
+              {children}
+            </>
+            )
+          }
+
         </body>
       </html>
     </NextIntlClientProvider>

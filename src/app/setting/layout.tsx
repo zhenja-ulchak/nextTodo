@@ -6,7 +6,7 @@ export default function AboutLayout({
   }) {
     return (
       <div>
-        <h1>SETTING</h1>
+
         <div>{children}</div>
       </div>
     );
