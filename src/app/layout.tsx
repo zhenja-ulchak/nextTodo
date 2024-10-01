@@ -23,36 +23,15 @@ export default function RootLayout({
 
   // Якщо користувач не авторизований — редирект на логін
 
-  useEffect(() => {
-    if (!isAuthenticated()) {
-      // router.push('/login');  // Переадресовуємо на логін
-
-    }
-
-  }, [router]);
 
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages[locale]}>
       <html lang={locale}>
         <body>
-
-          {isAuthenticated() ?
-
-            <>
-              <SideBar />
+          <Login/>
               {children}
-              <Footer />
-            </>
-            :
-            (
-            <>
-              <Login />
-              {children}
-            </>
-            )
-          }
-
+           
         </body>
       </html>
     </NextIntlClientProvider>
