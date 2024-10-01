@@ -71,7 +71,7 @@ const SideBar = () => {
             </Typography>
             <Button
               sx={{ padding: '5px 40px', background: '#ffffff', color: '#000000' }}
-            //   onClick={() => router.push('/settings')}
+              onClick={() => router.push('/setting')}
               variant="contained"
             >
               {t('sideBar.SETTING')}

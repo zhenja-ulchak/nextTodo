@@ -1,15 +1,11 @@
 'use client';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Footer } from '../../components/footer'
 import SideBar from '../../components/sidebar'
-import { NextIntlClientProvider } from 'next-intl';
-import { useRouter } from 'next/navigation';
-// import { isAuthenticated } from './utils/auth';
-// import Login from './login/page'
 
 
 
-export default function RootLayout({
+export default function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -17,10 +13,12 @@ export default function RootLayout({
 
   return (
     <>
-      <SideBar />
-      {children}
-      <Footer />
-
+     
+     <SideBar />
+     {children}
+<Footer />
+     
+   
     </>
   );
 }
