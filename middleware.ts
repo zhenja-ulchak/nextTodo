@@ -65,7 +65,7 @@ export async function middleware(req: NextRequest) {
 
 // Визначаємо, для яких шляхів застосовувати middleware
 export const config = {
-  matcher: ['/dashboard/:path*', '/dashboard/setting/:path*'],
+  matcher: ['/dashboard/:path*', '/dashboard/setting/:path*','/dashboard/todo-customer/:path*' ],
 };
 
 

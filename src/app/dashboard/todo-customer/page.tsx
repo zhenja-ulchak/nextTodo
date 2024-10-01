@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useEffect, useRef } from 'react';
 
-import { CustomersTodoStatusTypeEnum, CustomerTodoType } from '../../types/ToDoCustomerType'
+import { CustomersTodoStatusTypeEnum, CustomerTodoType } from '../../../types/ToDoCustomerType'
 import {
   fetchTodos,
   createToDoList,

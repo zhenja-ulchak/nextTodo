@@ -43,16 +43,24 @@ const SideBar = () => {
           <ListItemText />
         </ListItemButton>
       </ListItem>
-      {['/dashboard', '/todo', '/users', '/todos', '/account'].map((path, index) => (
-        <ListItem disablePadding key={index}>
-          <ListItemButton onClick={() => handleNavigation(path)}>
-            <ListItemIcon>
-              <InboxIcon />
-            </ListItemIcon>
-            <ListItemText primary={`${path}`} />
-          </ListItemButton>
-        </ListItem>
-      ))}
+     
+      <ListItem disablePadding>
+      <ListItemButton onClick={() => handleNavigation('/dashboard')}>
+        <ListItemIcon>
+          <InboxIcon />
+        </ListItemIcon>
+        <ListItemText primary="dashboard" /> {/* Відображаємо текст без слеша */}
+      </ListItemButton>
+    </ListItem>
+    
+    <ListItem disablePadding>
+      <ListItemButton onClick={() => handleNavigation('/dashboard/todo-customer')}>
+        <ListItemIcon>
+          <InboxIcon />
+        </ListItemIcon>
+        <ListItemText primary="todo" /> {/* Відображаємо текст без слеша */}
+      </ListItemButton>
+      </ListItem>
     </List>
     </Box>
   );
