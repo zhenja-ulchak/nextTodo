@@ -1,12 +1,9 @@
 'use client';
-import React, { useEffect, useState } from 'react';
-import { Footer } from '../components/footer';
-import SideBar from '../components/sidebar';
+import React from 'react';
+
 import { NextIntlClientProvider } from 'next-intl';
 import { useRouter } from 'next/navigation';
-import { isAuthenticated } from './utils/auth'; // Імпорт функції для перевірки авторизації
-import Login from './login/page';
-import DashboardLayout from './dashboard/layout';
+
 
 // Завантаження повідомлень
 const messages = {
@@ -22,7 +19,7 @@ export default function RootLayout({
 
   const locale = 'ua'; // Виберіть локаль
   const router = useRouter();
-  router.push('/login');
+  // router.push('/login');
   
   // Рендеримо контент, якщо авторизація пройшла успішно
   return (

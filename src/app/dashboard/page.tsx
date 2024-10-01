@@ -1,15 +1,13 @@
-// app/dashboard/page.tsx
-import { cookies } from 'next/headers';
-import { redirect } from 'next/navigation';
-import { Footer } from '../../components/footer'
-import SideBar from '../../components/sidebar'
-
+'use client';
+import React from 'react';
 
 const DashboardPage = () => {
   return (
-    <>
- 
-    </>
-  )
-}
+    <div>
+      <h1>Dashboard</h1>
+      {/* Додайте тут контент для сторінки Dashboard */}
+    </div>
+  );
+};
+
 export default DashboardPage;

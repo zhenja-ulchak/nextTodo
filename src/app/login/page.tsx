@@ -1,37 +1,33 @@
 // app/login/page.tsx
 'use client';
-import { useState } from 'react';
-
-
+import { useState, useEffect } from 'react';
 import { TextField, Button, Container, Typography, Box } from '@mui/material';
 import { useRouter } from 'next/navigation';
 import { GetLogin } from '../../api/ApiProvaider';
 
+
 const Login: React.FC = () => {
   const router = useRouter(); // Використання useRouter для маршрутизації
-  const [user, setUser] = useState<string | null>(null);
   const [username, setUsername] = useState('INDYN\\demo-testa');
   const [password, setPassword] = useState('1234');
+
+
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); // Перешкоджаємо перезавантаженню сторінки
    
-      try {
-       
-         const res = await GetLogin(username, password)
-           console.log(res);
-           
-        if (res.data) {
-          setUser( username );
-  
-          localStorage.setItem('user', 'true');
-          window.location.href = '/dashboard'
-        } 
-      // Перенаправлення на домашню сторінку після успішного логіну
-      } catch (error) {
-        console.error('Login failed:', error); // Обробка помилок
-      }
-   
+    try {
+      const res = await GetLogin(username, password);
+      console.log(res);
+      
+      
+      if (res.data) {
+        
+        router.push('/dashboard'); // Перенаправлення на dashboard після успішного логіну
+      } 
+    } catch (error) {
+      console.error('Login failed:', error); // Обробка помилок
+    }
   };
 
   return (
@@ -83,4 +79,4 @@ const Login: React.FC = () => {
   );
 };
 
-export default Login;
+export default Login;  

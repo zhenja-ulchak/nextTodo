@@ -16,7 +16,7 @@ export default function DashboardLayout({
      
      <SideBar />
      {children}
-<Footer />
+      <Footer />
      
    
     </>
