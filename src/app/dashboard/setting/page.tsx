@@ -1,17 +1,18 @@
 
+"use client"
 import { Container, Typography } from '@mui/material';
 // import LanguageSwitcher from '../public/ButtonChengeLang';
-// import Debug from '../components/debugpanel';
+import Debug from '../../../components/DebugPanel';
 import Switch from '@mui/material/Switch';
-// import useDebugStore from '../store/DebugStore'; // Імпортуємо сховище
+import useDebugStore from '../../../app/store/DebugStore'; // Імпортуємо сховище
 import Accordion from '@mui/material/Accordion';
-// import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Button from '@mui/material/Button';
 import { useTranslations } from 'next-intl';
-// import { FaArrowLeft } from "react-icons/fa";
+import { FaArrowLeft } from "react-icons/fa";
 
 
 
@@ -23,19 +24,19 @@ const AccordionStyle = {
 const SettingPage = () => {
     const  t  = useTranslations();
     // @ts-ignore
-    // const isOpen = useDebugStore((state) => state.isOpen); // Отримуємо стан
-    // // @ts-ignore
-    // const toggleOpen = useDebugStore((state) => state.toggleOpen); // Отримуємо функцію для зміни стану
+    const isOpen = useDebugStore((state) => state.isOpen); // Отримуємо стан
     // @ts-ignore
-    // const router = useRouter();
+    const toggleOpen = useDebugStore((state) => state.toggleOpen); // Отримуємо функцію для зміни стану
+    // @ts-ignore
+    const router = useRouter();
 
     return (
         <>
             <Button
-                // onClick={()=>  router.push('home')}
+                onClick={()=>  router.push('home')}
                 sx={{ color: '#000000' }}
             >
-                {/* <FaArrowLeft size={30} /> */}
+                <FaArrowLeft size={30} />
             </Button>
             <Container>
                 <Typography variant="h2" noWrap component="p" sx={{ marginTop: '100px', marginLeft: '30%' }}>
@@ -68,15 +69,15 @@ const SettingPage = () => {
                     <AccordionDetails>
 
                         <Switch
-                            // checked={isOpen}
-                            // onChange={toggleOpen}
+                            checked={isOpen}
+                            onChange={toggleOpen}
                             inputProps={{ 'aria-label': 'controlled' }}
                         />
                     </AccordionDetails>
                 </Accordion>
               
             </Container>
-            {/* <Debug open={isOpen} /> */}
+            <Debug open={isOpen} />
         </>
     );
 };
