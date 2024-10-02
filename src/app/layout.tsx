@@ -17,7 +17,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const isOpen = useDebugStore((state) => state.isOpen);
+  const isOpen = useDebugStore((state: { isOpen: any; }) => state.isOpen);
   const locale = 'ua';
   const router = useRouter();
  
