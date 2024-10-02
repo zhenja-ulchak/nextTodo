@@ -13,6 +13,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Button from '@mui/material/Button';
 import { useTranslations } from 'next-intl';
 import { FaArrowLeft } from "react-icons/fa";
+import { useEffect } from 'react';
 
 
 
@@ -29,6 +30,16 @@ const SettingPage = () => {
     const toggleOpen = useDebugStore((state) => state.toggleOpen); // Отримуємо функцію для зміни стану
     // @ts-ignore
     const router = useRouter();
+
+ 
+    useEffect(() => {
+      const token = localStorage.getItem('user');
+  
+      if (!token) {
+        // Якщо токен не знайдений, перенаправляємо на сторінку логіну
+        router.push('/login');
+      }
+    }, [router]);
 
     return (
         <>

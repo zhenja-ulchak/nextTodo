@@ -271,6 +271,16 @@ const TodoApp: React.FC = () => {
     );
   };
 
+  const router = useRouter(); 
+  useEffect(() => {
+    const token = localStorage.getItem('user');
+
+    if (!token) {
+      // Якщо токен не знайдений, перенаправляємо на сторінку логіну
+      router.push('/login');
+    }
+  }, [router]);
+
   return (
     <>
       <ModuleUpdate

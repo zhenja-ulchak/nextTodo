@@ -10,7 +10,7 @@ const Login: React.FC = () => {
   const router = useRouter(); // Використання useRouter для маршрутизації
   const [username, setUsername] = useState('INDYN\\demo-testa');
   const [password, setPassword] = useState('1234');
-
+  const [user, setUser] = useState<string | null>(null);
 
   const handleRegisteration = async () => {
 
@@ -26,12 +26,19 @@ const Login: React.FC = () => {
       const res = await GetLogin(username, password);
       console.log(res)
       if (res.data) {
+      
+        localStorage.setItem('user', username);
         router.push('/dashboard'); // Перенаправлення на dashboard після успішного логіну
       }
     } catch (error) {
       console.error('Login failed:', error); // Обробка помилок
     }
   };
+
+  // useEffect(() => {
+  //   setUser(localStorage.getItem('user'));
+  // }, []);
+
 
   return (
 

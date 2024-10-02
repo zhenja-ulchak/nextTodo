@@ -1,6 +1,9 @@
 'use client';
 import React from 'react';
 
+
+
+
 export default function DashboardLayout({
   children,
 }: {
@@ -9,7 +12,12 @@ export default function DashboardLayout({
 
   return (
     <>
+     
+  
      {children}
+ 
+     
+   
     </>
   );
 }
