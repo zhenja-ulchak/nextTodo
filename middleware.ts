@@ -3,7 +3,7 @@ import { NextRequest } from 'next/server';
 
 import { parse, splitCookiesString } from 'set-cookie-parser'
 // Захищені маршрути, які вимагають авторизації
-const protectedRoutes = ['/dashboard', '/setting'];
+const protectedRoutes = ['/dashboard', '/dashboard/setting','/dashboard/todo-customer'];
 
 export async function middleware(req: NextRequest) {
     const { pathname, origin } = req.nextUrl

@@ -17,11 +17,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
 
-  const locale = 'ua'; // Виберіть локаль
+  const locale = 'ua'; 
   const router = useRouter();
   // router.push('/login');
   
-  // Рендеримо контент, якщо авторизація пройшла успішно
+
   return (
     <NextIntlClientProvider locale={locale} messages={messages[locale]}>
        <html lang={locale}>
