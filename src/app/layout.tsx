@@ -1,9 +1,10 @@
 'use client';
 import React from 'react';
 import Debug from '../components/DebugPanel'
-import { NextIntlClientProvider } from 'next-intl';
+import { NextIntlClientProvider, useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
-import useDebugStore from '../app/store/DebugStore'; 
+import useDebugStore from '../app/store/DebugStore';
+import { Button } from '@mui/material';
 
 // Завантаження повідомлень
 const messages = {
@@ -16,19 +17,19 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const isOpen = useDebugStore((state) => state.isOpen);
-  const locale = 'ua'; 
+  const isOpen = useDebugStore((state: { isOpen: any; }) => state.isOpen);
+  const locale = 'ua';
   const router = useRouter();
-  // router.push('/login');
-  
+ 
+
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages[locale]}>
-       <html lang={locale}>
-       <body>
-    
-        {children}
-        <Debug open={isOpen}/>
+      <html lang={locale}>
+        <body>
+     
+          {children}
+          <Debug open={isOpen} />
         </body>
       </html>
     </NextIntlClientProvider>

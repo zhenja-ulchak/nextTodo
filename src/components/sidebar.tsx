@@ -20,6 +20,7 @@ import { useTranslations } from 'next-intl';
 
 import { useRouter } from 'next/navigation';
 import { Url } from 'next/dist/shared/lib/router/router';
+import Logout from './Logout';
 const SideBar = () => {
   const router = useRouter();
    const t = useTranslations();
@@ -39,7 +40,7 @@ const SideBar = () => {
       <List>
       <ListItem disablePadding>
         <ListItemButton>
-          {/* <Logout /> */}
+          <Logout />
           <ListItemText />
         </ListItemButton>
       </ListItem>

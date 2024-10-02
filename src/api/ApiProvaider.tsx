@@ -43,6 +43,28 @@ export const GetLogin = async (username: string, password: string) => {
   }
 };
 
+export const PostLogin = async (username: string, password: string) => {
+  try {
+    const authString = `Basic ${btoa(`${username}:${password}`)}`;
+    const response = await axios.post(`${BASE_URL}/user/login`, {
+      headers: {
+        Authorization: authString,
+      },
+      withCredentials: true,
+    });
+
+    if (response.status === 200) {
+      return response.data;
+    } else {
+      throw new Error(`Unexpected status code: ${response.status}`);
+    }
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    throw error;
+  }
+};
+
+
 export const GetLoginRefresh = async (username: string, password: string, ) => {
   try {
     const authString = `Basic ${btoa(`${username}:${password}`)}`;
